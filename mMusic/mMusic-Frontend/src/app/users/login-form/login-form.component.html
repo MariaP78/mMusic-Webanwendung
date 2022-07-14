@@ -1,0 +1,24 @@
+<div class="login-form">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <h1>Sign in to your account</h1>
+      <br>
+      <div class="login-form-row">
+          <mat-form-field appearance="fill">
+              <mat-label>Enter your email</mat-label>
+              <input matInput placeholder="username@example.com" formControlName="email" required>
+              <mat-error *ngIf="loginForm.get('email')?.value.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+      </div>
+      <div class="login-form-row">
+          <mat-form-field appearance="fill">
+              <mat-label>Enter your password</mat-label>
+              <input matInput formControlName="password" type="password" required>
+              <mat-error *ngIf="loginForm.get('password')?.value.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+      </div>
+      <br>
+      <div class="login-form-row">
+          <button mat-raised-button color="primary" type="submit" class="login-button" (click)="loginButtonOnClick()">Log In</button>
+      </div>
+    </form>
+</div>

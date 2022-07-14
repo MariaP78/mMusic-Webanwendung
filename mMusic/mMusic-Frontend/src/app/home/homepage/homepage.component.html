@@ -1,0 +1,82 @@
+<mat-tab-group>
+  <mat-tab label="Recommended For You">
+    <div class="content" >
+      <div fxLayout="row wrap" fxLayoutGap="16px grid">
+        <div fxFlex="25%"  fxFlex.xs="100%" fxFlex.sm="33%"  *ngFor="let recommendedSong of recommendedSongs">
+          <mat-card class="mat-elevation-z4" id = "zoom">
+            <mat-card-header>
+              <div class = "header-card">
+                <section class="left">
+                  <mat-card-title>{{ recommendedSong.title }}</mat-card-title>
+                  <mat-card-subtitle>{{ recommendedSong.author }} - {{ recommendedSong.album }}</mat-card-subtitle>
+                </section>
+                <section class="right">
+                  <button mat-icon-button color="primary" matTooltip="add song to playlist" (click)="addSongToPlaylist(this.auth.currentUser.email, recommendedSong.hashCode)" class = "add-to-playlist-container">
+                    <mat-icon class="add-to-playlist-button">playlist_add</mat-icon>
+                  </button>
+                </section>
+              </div>
+            </mat-card-header>
+            <img mat-card-image src="../assets/mMusic_Song.jpg">
+            <mat-card-content>
+              <mat-chip-list aria-label="Song Details">
+                <mat-chip>{{ recommendedSong.genre }}</mat-chip>
+                <mat-chip>{{ recommendedSong.releaseYear }}</mat-chip>
+              </mat-chip-list>
+            </mat-card-content>
+            <mat-card-actions>
+              <div class = "buttons-song">
+                <button mat-icon-button color="primary" matTooltip="play" (click)="playSong(recommendedSong.hashCode)" class = "play-song-container" *ngIf="playing != recommendedSong.hashCode">
+                  <mat-icon class="play-song-button">play_arrow</mat-icon>
+                </button>
+                <button mat-icon-button color="primary" matTooltip="pause" (click)="pauseSong()" class = "pause-song-container" *ngIf="playing && playing == recommendedSong.hashCode">
+                  <mat-icon class="pause-song-button">pause</mat-icon>
+                </button>
+              </div>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="Songs">
+    <div class="content" >
+      <div fxLayout="row wrap" fxLayoutGap="16px grid">
+        <div fxFlex="25%"  fxFlex.xs="100%" fxFlex.sm="33%"  *ngFor="let song of songs">
+          <mat-card class="mat-elevation-z4" id = "zoom">
+            <mat-card-header>
+              <div class = "header-card">
+                <section class="left">
+                  <mat-card-title>{{ song.title }}</mat-card-title>
+                  <mat-card-subtitle>{{ song.author }} - {{ song.album }}</mat-card-subtitle>
+                </section>
+                <section class="right">
+                  <button mat-icon-button color="primary" matTooltip="add song to playlist" (click)="addSongToPlaylist(this.auth.currentUser.email, song.hashCode)" class = "add-to-playlist-container">
+                    <mat-icon class="add-to-playlist-button">playlist_add</mat-icon>
+                  </button>
+                </section>
+              </div>
+            </mat-card-header>
+            <img mat-card-image src="../assets/mMusic_Song.jpg">
+            <mat-card-content>
+              <mat-chip-list aria-label="Song Details">
+                <mat-chip>{{ song.genre }}</mat-chip>
+                <mat-chip>{{ song.releaseYear }}</mat-chip>
+              </mat-chip-list>
+            </mat-card-content>
+            <mat-card-actions>
+              <div class = "buttons-song">
+                <button mat-icon-button color="primary" matTooltip="play" (click)="playSong(song.hashCode)" class = "play-song-container" *ngIf="playing != song.hashCode">
+                  <mat-icon class="play-song-button">play_arrow</mat-icon>
+                </button>
+                <button mat-icon-button color="primary" matTooltip="pause" (click)="pauseSong()" class = "pause-song-container" *ngIf="playing && playing == song.hashCode">
+                  <mat-icon class="pause-song-button">pause</mat-icon>
+                </button>
+              </div>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+</mat-tab-group>

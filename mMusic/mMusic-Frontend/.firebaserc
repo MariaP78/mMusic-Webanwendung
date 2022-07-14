@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "mmusic-web-app": {
+      "hosting": {
+        "mMusic-Frontend": [
+          "mmusic-web-app"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "mmusic-web-app"
+  }
+}

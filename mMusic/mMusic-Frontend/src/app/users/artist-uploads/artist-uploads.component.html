@@ -1,0 +1,43 @@
+<h1 style="margin: 10px; text-align: center">Your Uploaded Songs</h1>
+<br>
+<div class="content">
+  <mat-divider></mat-divider>
+  <mat-list>
+    <section *ngFor="let song of songs">
+      <mat-list-item>
+        <div class="song-list-item">
+          <section class="left">
+            <span class="song-header">{{ song.stageName }}
+              <span *ngIf="song.title!=null"> - {{ song.title }}</span>
+            </span>
+            <mat-chip-list style="margin-left: 10px;">
+              <mat-chip>{{ song.genre }}</mat-chip>
+            </mat-chip-list>
+            <div class="buttons-song">
+              <button
+                mat-icon-button
+                matTooltip="Check if your song is verified!"
+                (click)="verifySong(song.hashCode)"
+                class="verify-song-container"
+              >
+                <mat-icon class="verify-song-button">help_outline</mat-icon>
+              </button>
+            </div>
+          </section>
+          <section class="right">
+            <button
+              mat-icon-button
+              color="primary"
+              matTooltip="update song details"
+              class="update-song-container"
+              (click)="updateSong(song.hashCode,song.title,song.stageName,song.genre)"
+            >
+              <mat-icon class="play-song-button">update</mat-icon>
+            </button>
+          </section>
+        </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </section>
+  </mat-list>
+</div>

@@ -1,0 +1,53 @@
+<h1 style="margin: 10px; text-align: center" *ngIf="this.auth.currentUser != null">{{this.auth.currentUser?.firstname +" "+ this.auth.currentUser?.lastname}} 's Profile</h1>
+<div class="update-user-form-page">
+  <form [formGroup]="updateUserDetailsForm" (ngSubmit)="onSubmit()">
+    <div class="update-user-form-page-row">
+      <h2>Birthday</h2>
+      <mat-form-field appearance="outline">
+        <input matInput formControlName="birthday" required placeholder="Example: 12/12/1999" [matDatepicker]="picker"/>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="update-user-form-page-row">
+      <h2>Firstname</h2>
+      <mat-form-field appearance="outline">
+        <input matInput formControlName="firstname" required placeholder="Example: John"/>
+        <mat-icon matSuffix>face</mat-icon>
+      </mat-form-field>
+    </div>
+    <div class="update-user-form-page-row">
+      <h2>Lastname</h2>
+      <mat-form-field appearance="outline">
+        <input matInput formControlName="lastname" required placeholder="Example: Doe"/>
+        <mat-icon matSuffix>face</mat-icon>
+      </mat-form-field>
+    </div>
+    <div class="update-user-form-page-row">
+      <h2>Phone</h2>
+      <mat-form-field appearance="outline">
+        <input matInput formControlName="phone" required placeholder="Example: 0777111222"/>
+        <mat-icon matSuffix>call</mat-icon>
+      </mat-form-field>
+    </div>
+    <div class="update-user-form-page-row">
+      <h2>{{auth.currentUser?.artist?"Stage":"Nick"}} Name</h2>
+      <mat-form-field appearance="outline">
+        <input matInput formControlName="stageName" required placeholder="Example: Johnny"/>
+        <mat-icon matSuffix>theater_comedy</mat-icon>
+      </mat-form-field>
+    </div>
+    <div class="update-user-form-page-row">
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        class="update-button"
+        (click)="updateUserDetailsOnClick()"
+      >
+        Update your account details
+      </button>
+    </div>
+  </form>
+</div>
+

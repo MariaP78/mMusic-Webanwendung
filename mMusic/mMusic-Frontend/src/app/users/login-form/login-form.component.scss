@@ -1,0 +1,15 @@
+form {
+    text-align: center;
+    padding: 10px;
+}
+
+.login-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100% - 116.5px);
+}
+
+.login-form-row .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+}

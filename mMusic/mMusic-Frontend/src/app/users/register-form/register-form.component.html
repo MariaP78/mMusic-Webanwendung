@@ -1,0 +1,89 @@
+<div class="register-form">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <h1>New on mMusic? Register for free!</h1>
+    <div class="register-form-row">
+      <h2>Are you an artist? Check this if you are! <mat-checkbox (change)="onChange($event)"></mat-checkbox></h2>
+    </div>
+    <div class="register-form-row">
+      <mat-form-field appearance="fill" class = "register-input-field">
+        <mat-label>Enter your firstname</mat-label>
+        <input matInput formControlName="firstname" required />
+      </mat-form-field>
+    </div>
+    <div class="register-form-row">
+      <mat-form-field appearance="fill" class = "register-input-field">
+        <mat-label>Enter your lastname</mat-label>
+        <input matInput formControlName="lastname" required />
+      </mat-form-field>
+    </div>
+    <div class="register-form-row">
+      <mat-form-field appearance="fill" class = "register-input-field">
+        <mat-label >Enter your {{isArtistChecked?"stage":"nick"}} name</mat-label>
+        <input matInput formControlName="stageName" required />
+      </mat-form-field>
+    </div>
+    <div class="register-form-row">
+      <mat-form-field appearance="fill" class = "register-input-field">
+        <mat-label>Enter your phone</mat-label>
+        <input matInput formControlName="phone" required />
+      </mat-form-field>
+    </div>
+    <div class="register-form-row">
+      <mat-form-field appearance="fill" class = "register-input-field">
+        <mat-label>Enter your birthday</mat-label>
+        <input matInput formControlName="birthday" required [matDatepicker]="picker"/>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="register-form-row">
+      <mat-form-field appearance="fill" class = "register-input-field">
+        <mat-label>Enter your email</mat-label>
+        <input
+          matInput
+          placeholder="username@example.com"
+          formControlName="email"
+          required
+        />
+        <mat-error *ngIf="registerForm.get('email')?.value.invalid">{{
+          getErrorMessage()
+        }}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="register-form-row">
+      <mat-form-field appearance="fill" class = "register-input-field">
+        <mat-label>Enter your password</mat-label>
+        <input matInput formControlName="password" type="password" required />
+        <mat-error *ngIf="registerForm.get('password')?.value.invalid">{{
+          getErrorMessage()
+        }}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="register-form-row">
+      <mat-form-field appearance="fill" class = "register-input-field">
+        <mat-label>Confirm your password</mat-label>
+        <input
+          matInput
+          formControlName="confirmPassword"
+          type="password"
+          required
+        />
+        <mat-error *ngIf="registerForm.get('confirmPassword')?.value.invalid">{{
+          getErrorMessage()
+        }}</mat-error>
+      </mat-form-field>
+    </div>
+    <br />
+    <div class="register-form-row">
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        class="register-button"
+        (click)="registerButtonOnClick()"
+      >
+        Register
+      </button>
+    </div>
+  </form>
+</div>

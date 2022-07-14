@@ -1,0 +1,31 @@
+<form [formGroup]="updateSongForm" (ngSubmit)="onSubmit()">
+  <h3>Update Your Song's Details</h3>
+  <br>
+  <div class="update-song-form-page-row">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter title</mat-label>
+      <input matInput formControlName="title" required />
+    </mat-form-field>
+  </div>
+  <div class="update-song-form-page-row">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your stage name</mat-label>
+      <input matInput formControlName="stageName" required />
+    </mat-form-field>
+  </div>
+  <div class="update-song-form-page-row">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter genre</mat-label>
+      <!-- <input matInput formControlName="genre" required /> -->
+      <mat-select formControlName="genre" name="genre">
+        <mat-option *ngFor="let genre of genres" [value]="genre">
+          {{genre}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</form>
+<div mat-dialog-actions [align]="'center'">
+  <button mat-raised-button color="primary" type ="submit" [mat-dialog-close] = "true" (click)="sendData()">Update</button>
+  <button mat-raised-button color="primary" [mat-dialog-close] = "false">Close</button>
+</div>

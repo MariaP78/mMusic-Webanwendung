@@ -1,0 +1,49 @@
+.content {
+  padding: 16px;
+}
+
+.content > mat-card {
+  margin-bottom: 16px;
+}
+
+.buttons-song{
+  text-align: center;
+}
+
+.play-song-button{
+  font-size: 50px;
+  height: 50px;
+  width: 50px;
+}
+
+.pause-song-button{
+  font-size: 50px;
+  height: 50px;
+  width: 50px;
+}
+
+.add-to-playlist-container{
+  margin-right: 20px;
+}
+
+.add-to-playlist-button{
+  font-size: 50px;
+  height: 50px;
+  width: 50px;
+}
+
+#zoom {
+  transition: transform .2s; /* Animation */
+}
+
+#zoom:hover {
+  cursor: pointer;
+  transform: scale(1.03); /* (150% zoom)*/
+}
+
+.header-card{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width:100%;
+}

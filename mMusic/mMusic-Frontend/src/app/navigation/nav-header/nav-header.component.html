@@ -1,0 +1,32 @@
+<mat-toolbar color="primary">
+  <div>
+    <button mat-icon-button (click)="onToggleSidenav()" matTooltip="Menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+  <div>
+    <a routerLink=""  matTooltip="Home">mMusic</a>
+  </div>
+  <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+    <ul fxLayout  class="navigation-items">
+      <li *ngIf="this.auth.currentUser!=null">
+        <a routerLink="/profile"> My Profile </a>
+      </li>
+      <li *ngIf="this.auth.currentUser?.artist">
+        <a routerLink="/newSong"  matTooltip="Upload a new song">
+          <mat-icon style="padding-top: 3.5px">audio_file</mat-icon>
+        </a>
+      </li>
+      <li *ngIf="this.auth.currentUser?.artist">
+        <a routerLink="/your-uploads" (click)="goToYourUploads()"  matTooltip="Go to your uploaded songs">
+          <mat-icon style="padding-top: 3.5px">publish</mat-icon>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/playlist" (click)="goToPlaylist()"  *ngIf="this.auth.currentUser!=null" matTooltip="Go to your playlist">
+          <mat-icon style="padding-top: 3.5px">library_music</mat-icon>
+        </a>
+      </li>
+    </ul>
+  </div>
+</mat-toolbar>

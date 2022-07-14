@@ -1,0 +1,20 @@
+.song-list-item{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width:100%;
+}
+
+.left{
+  display: flex;
+  align-items: center;
+}
+
+.song-header{
+  font-size:medium;
+  font-weight: 500;
+}
+
+.mat-icon.delete-song-button{
+  color: #D32F2F !important;
+}

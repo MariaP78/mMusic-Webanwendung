@@ -1,0 +1,55 @@
+<h1 style="margin: 10px; text-align: center">Your Playlist</h1>
+<br>
+<div class="content">
+  <mat-divider></mat-divider>
+  <mat-list>
+    <section *ngFor="let song of songs">
+      <mat-list-item>
+        <div class="song-list-item">
+          <section class="left">
+            <span class="song-header">{{ song.title }}
+              <span *ngIf="song.album!=null"> - {{ song.album }}</span>
+            </span>
+            <mat-chip-list style="margin-left: 10px;">
+              <mat-chip>{{ song.genre }}</mat-chip>
+            </mat-chip-list>
+            <div class="buttons-song">
+              <button
+                mat-icon-button
+                color="primary"
+                matTooltip="play"
+                (click)="playSong(song.hashCode)"
+                class="play-song-container"
+                *ngIf="playing != song.hashCode"
+              >
+                <mat-icon class="play-song-button">play_arrow</mat-icon>
+              </button>
+              <button
+                mat-icon-button
+                color="primary"
+                matTooltip="pause"
+                (click)="pauseSong()"
+                class="pause-song-container"
+                *ngIf="playing && playing == song.hashCode"
+              >
+                <mat-icon class="pause-song-button">pause</mat-icon>
+              </button>
+            </div>
+          </section>
+          <section class="right">
+            <button
+              mat-icon-button
+              color="primary"
+              matTooltip="delete song from playlist"
+              (click)="deleteSong(this.auth.currentUser.email, song.hashCode)"
+              class="play-song-container"
+            >
+              <mat-icon class="delete-song-button">delete</mat-icon>
+            </button>
+          </section>
+        </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </section>
+  </mat-list>
+</div>

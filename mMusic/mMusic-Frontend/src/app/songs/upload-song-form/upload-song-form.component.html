@@ -1,0 +1,60 @@
+<div class="upload-song-form-page">
+  <form [formGroup]="uploadSongForm" (ngSubmit)="onSubmit()">
+    <h1>Upload your creation</h1>
+    <br>
+    <div class="upload-song-form-page-row">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter title</mat-label>
+        <input matInput formControlName="title" required />
+      </mat-form-field>
+    </div>
+    <div class="upload-song-form-page-row">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter album</mat-label>
+        <input matInput formControlName="album" required />
+      </mat-form-field>
+    </div>
+    <div class="upload-song-form-page-row">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter genre</mat-label>
+        <!-- <input matInput formControlName="genre" required /> -->
+        <mat-select formControlName="genre" name="genre">
+          <mat-option *ngFor="let genre of genres" [value]="genre">
+            {{genre}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="upload-song-form-page-row">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter release year</mat-label>
+        <input matInput formControlName="releaseYear" required />
+      </mat-form-field>
+    </div>
+    <br>
+    <div class="upload-song-form-page-row">
+      <!-- <label for="song">Choose your song: </label> -->
+      <h3>Choose your song: </h3>
+      <input
+      style="padding-left: 75px;"
+        type="file"
+        id="song"
+        name="song"
+        (change)="handleFileChange($event.target)"
+      />
+    </div>
+    <br />
+    <h2><mat-icon>verified</mat-icon> Your creation will be uploaded on Blockchain to keep it safe!</h2>
+    <div class="upload-song-form-page-row">
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        class="upload-button"
+        (click)="uploadSongOnClick()"
+      >
+        Upload your music
+      </button>
+    </div>
+  </form>
+</div>
